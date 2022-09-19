@@ -1,0 +1,22 @@
+<div *ngIf="freeTextResults !== null||undefined as value; else elseBlock">
+    <h1>Weather Details: <button (click)="onBookmark()">Bookmark</button></h1>
+    <blockquote>
+        <img [src]="freeTextResults?.current?.condition?.icon">
+        <h4>Fahrenheit: {{freeTextResults?.current?.temp_f}}</h4>
+        <h4>Celcius: {{freeTextResults?.current?.temp_c}}</h4>
+        <h4>Condition: {{freeTextResults?.current?.condition?.text}}</h4>
+    </blockquote>
+    <h1>Location: {{freeTextResults?.location?.name}}</h1>
+    <h3>Region: {{freeTextResults?.location?.region}}</h3>
+    <h3>Country: {{freeTextResults?.location?.country}}</h3>
+
+    <h4>Latitude: {{freeTextResults?.location?.country}}</h4>
+    <h4>Longitude: {{freeTextResults?.location?.country}}</h4>
+
+    <h5>LocalTime: {{freeTextResults?.location?.localtime}}</h5>
+    <h5>tz_id: {{freeTextResults?.location?.tz_id}}</h5>
+    <h5>LocalTime Epoch: {{freeTextResults?.location?.localtime_epoch}}</h5>
+</div>
+<ng-template #elseBlock>
+    <p>No results found</p>
+</ng-template>

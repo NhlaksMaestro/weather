@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row" *ngIf="displayBookmark">
+        <div class="cell-4 cell-offset-4">
+            <ul class="bookmarks">
+                <li *ngFor="let bookmark of bookmarks">
+                    <button [class.selected]="bookmark === locationSearchResults" type="button" (click)="onSelect(bookmark)">
+                    <span class="badge">{{bookmark?.location?.name}}</span>
+                    <span class="name">{{bookmark?.location?.country}}</span>
+                  </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell-4 cell-offset-4">
+            <button (click)="showBookmark()" [disabled]="bookmarks == null">{{showOrHideBookmarkButton}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell-4 cell-offset-4">
+            <input [formControl]="freeTextSearch" type="text" placeholder="search for location..." autofocus/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell-4 cell-offset-4">
+            <p>Location Searched: <b>{{searchTerm}}</b></p>
+        </div>
+    </div>
+</div>
+<div>
+    <app-office-weather-details *ngIf="!isLoading" [freeTextResults]="locationSearchResults">
+    </app-office-weather-details>
+</div>
